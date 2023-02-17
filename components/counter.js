@@ -3,7 +3,7 @@ import Stack from '@mui/material/Stack';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import Paper from '@mui/material/Paper';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Counter(props) {
 
@@ -11,6 +11,10 @@ export default function Counter(props) {
     const amount = props.amount;
     const description = props.description;
     const isMoney = props.isMoney;
+
+    useEffect(() => {
+        props.onCounterChange(count);
+    }, [count])
 
     return (
         <Paper
@@ -35,7 +39,8 @@ export default function Counter(props) {
                     </p>
                 </div>
                 <p style={{
-                    fontSize: '12px'
+                    fontSize: '10px', 
+                    textTransform: 'uppercase'
                 }}>{description}</p>
             </Stack>
             <Stack direction="row"
