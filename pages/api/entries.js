@@ -19,7 +19,7 @@ export default async (req, res) => {
             averageTips: entry.averageTips,
             averageTours: entry.averageTours,
           },
-        });        
+        });
         res.status(200).json("success");
       default:
         break;

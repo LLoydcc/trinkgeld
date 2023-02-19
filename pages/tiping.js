@@ -8,7 +8,9 @@ import Button from "@mui/material/Button";
 
 import Counter from "../components/counter";
 import { Timer } from "../components/timer";
+import { Clockin } from "../components/clockin";
 import Average from "../components/average";
+import Success from "../components/alerts/success";
 
 export default function Tiping() {
   const [hours, setHours] = React.useState(0);
@@ -16,6 +18,7 @@ export default function Tiping() {
   const [tipsPerHour, setTipsPerHour] = React.useState(0);
   const [tours, setTours] = React.useState(0);
   const [tips, setTips] = React.useState(0);
+  const [showAlert, setShowAlert] = React.useState(0);
   const timeRef = React.useRef(null);
 
   function setAverages() {
@@ -44,6 +47,7 @@ export default function Tiping() {
       };
       const response = await fetch(url, data);
       const res = await response.json();
+      setShowAlert(true);
     }
     saveWorkEntry();
   }
@@ -63,10 +67,10 @@ export default function Tiping() {
       >
         <Grid container spacing={2}>
           <Grid xs={12}>
-            <Timer
-              onHourIsChange={(hours) => setHours(hours)}
+            <Clockin
+              onHourChange={(hours) => setHours(hours)}
               ref={timeRef}
-            ></Timer>
+            ></Clockin>
           </Grid>
           <Grid xs={6}>
             <Counter
@@ -95,6 +99,7 @@ export default function Tiping() {
           </Grid>
           <Grid xs={12}>
             <Stack>
+              {showAlert ? <Success text={"Speichern erfolgreich"} /> : <></>}
               <Button variant="outlined" onClick={() => onSaveWorkEntry()}>
                 Speichern
               </Button>
