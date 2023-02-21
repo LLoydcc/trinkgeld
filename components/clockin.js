@@ -22,7 +22,8 @@ export const Clockin = React.forwardRef((props, ref) => {
 
   React.useEffect(() => {
     if (isClockedIn) {
-      initClockedInRoundedDate();
+      const rounded = getClockedInRoundedDate();
+      setClockedInAt(rounded);
     }
   }, [isClockedIn]);
 
@@ -55,12 +56,12 @@ export const Clockin = React.forwardRef((props, ref) => {
     return Math.round((first.getTime() - second.getTime()) / 1000);
   };
 
-  const initClockedInRoundedDate = () => {
+  const getClockedInRoundedDate = () => {
     var currentTime = new Date();
     const minutes = 15;
     const ms = 1000 * 60 * minutes;
     const roundedDate = new Date(Math.round(currentTime.getTime() / ms) * ms);
-    setClockedInAt(roundedDate);
+    return roundedDate;
   };
 
   const handleClockInClockOut = () => {
