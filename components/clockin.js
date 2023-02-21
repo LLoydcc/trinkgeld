@@ -6,10 +6,13 @@ import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import Moment from "moment";
 
 /** 
- * clockin.js is a variation of the standard timer (timer.js).
- * In the default usecase the worktime gets billed in a sequence of 15 minutes (can be adjusted if needed). 
- * This results in a rounded starting time after the clockin. Meaning if the clockin takes place at 13:23 the
- * shift will start at 13:30. If the clockin is made at 13:17 the shift is already running for 2 minutes.
+ * Clockin.js is a modified version of the standard timer (timer.js). 
+ * By default, it bills worktime in 15-minute intervals, although this can be adjusted if necessary. 
+ * This means that the starting time of a shift is rounded to the nearest quarter-hour before or after the clockin time. 
+ * For example, if someone clocks in at 13:23, their shift will start at 13:30. 
+ * However, if they clock in at 13:17, the shift will have already been running for 2 minutes.
+ * 
+ * credits to my boi Levent (follow him on twitter @levent_io) for a smarter way of keeping the worktime up to date. 
 */
 
 export const Clockin = React.forwardRef((props, ref) => {
