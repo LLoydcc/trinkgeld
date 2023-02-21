@@ -20,6 +20,7 @@ export default function Tiping() {
   const [tips, setTips] = React.useState(0);
   const [showAlert, setShowAlert] = React.useState(0);
   const timeRef = React.useRef(null);
+  
 
   function setAverages() {
     if (hours < 1) {

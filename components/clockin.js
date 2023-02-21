@@ -114,6 +114,10 @@ export const Clockin = React.forwardRef((props, ref) => {
     const minutes = `${Math.floor(workTimeInSeconds / 60)}`;
     const getMinutes = `${minutes % 60}`;
     const quarters = Math.floor(getMinutes / 15);
+
+    console.log('seconds', workTimeInSeconds);
+    console.log('minutes', getMinutes);
+    
     let getQuarters = ``;
     switch (quarters) {
       case 0:
