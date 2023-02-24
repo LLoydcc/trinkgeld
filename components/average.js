@@ -1,5 +1,6 @@
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 
 export default function Average(props) {
   const isMoney = props.isMoney;
@@ -10,26 +11,22 @@ export default function Average(props) {
       }}
     >
       <Stack direction="row" justifyContent="center" alignItems="center">
-        <h1
-          style={{
-            fontSize: "12px",
-            fontWeight: "normal",
+        <Typography variant="overline"
+          style={{        
             textTransform: "uppercase",
+            fontSize: "11px"
           }}
         >
           {props.title}
-        </h1>
+        </Typography>
       </Stack>
       <Stack direction="row" justifyContent="center" alignItems="center">
-        <p
-          style={{
-            fontSize: "21px",
-            margin: 0,
-          }}
+        <Typography
+          variant="h6"
         >
           {props.value}
           {isMoney && "€"}
-        </p>
+        </Typography>
       </Stack>
     </Paper>
   );

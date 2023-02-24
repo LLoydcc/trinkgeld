@@ -31,13 +31,15 @@ export default function Overview() {
 
   function renderEntries() {
     Moment.locale("en");
-    const items = entries.map((entry) => (      
-        <TableRow key={entry.id}>
+    const items = entries.map((entry) => (
+      <Link href={"/shift/" + entry.id} key={entry.id} passHref legacyBehavior>
+        <TableRow sx={{cursor: 'pointer'}}>
           <TableCell>{Moment(entry.date).format("DD.MM.YYYY")}</TableCell>
           <TableCell>{entry.time}</TableCell>
           <TableCell>{entry.tips}€</TableCell>
           <TableCell>{entry.tours}</TableCell>
-        </TableRow>      
+        </TableRow>
+      </Link>
     ));
     return (
       <Fragment>

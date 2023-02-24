@@ -3,6 +3,7 @@ import Stack from "@mui/material/Stack";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
 import { useState, useEffect } from "react";
 
 export default function Counter(props) {
@@ -30,25 +31,20 @@ export default function Counter(props) {
           marginBottom: "12px",
         }}
       >
-        <div>
-          <p
-            style={{
-              fontSize: "21px",
-              margin: 0,
-            }}
-          >
-            {count}
-            {isMoney && "€"}
-          </p>
-        </div>
-        <p
-          style={{
-            fontSize: "10px",
+        <Typography variant="h6">
+          {count}
+          {isMoney && "€"}
+        </Typography>
+        <Typography
+          variant="overline"
+          sx={{
             textTransform: "uppercase",
+            paddingTop: '3px',
+            fontSize: '11px'
           }}
         >
           {description}
-        </p>
+        </Typography>
       </Stack>
       <Stack
         direction="row"

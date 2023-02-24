@@ -8,6 +8,9 @@ export default async (req, res) => {
     const entry = await prisma.WorkEntry.findUnique({
       where:{
         id: parseInt(query.Id)         
+      }, 
+      include: {
+        hours: true
       }
     });
     res.status(200).json(entry);

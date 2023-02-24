@@ -20,4 +20,16 @@ model WorkEntry {
   averageTips   Decimal
   start         DateTime
   end           DateTime
+  hours         WorkHour[]
+}
+
+model WorkHour {
+  id            Int       @id @default(autoincrement())
+  workEntry     WorkEntry @relation(fields: [workEntryId], references: [id])
+  workEntryId   Int
+  hourCount     Int
+  tips          Decimal
+  tours         Int
+  tipsPerHour   Decimal
+  toursPerHour  Decimal
 }

@@ -3,6 +3,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export default async (req, res) => {  
+  
   try {
     switch (req.method) {
       case "GET":
@@ -11,6 +12,7 @@ export default async (req, res) => {
         break;
       case "POST":
         const entry = req.body;
+        console.log(entry.hours)
         const saveEntry = await prisma.WorkEntry.create({
           data: {
             time: entry.time,
@@ -18,8 +20,13 @@ export default async (req, res) => {
             tips: entry.tips,
             averageTips: entry.averageTips,
             averageTours: entry.averageTours,
+            start: entry.start, 
+            end: entry.end,
+            hours: {
+              create: entry.hours
+            }
           },
-        });
+        });        
         res.status(200).json("success");
       default:
         break;
