@@ -11,8 +11,7 @@ export default async (req, res) => {
         res.status(200).json(allEntries);
         break;
       case "POST":
-        const entry = req.body;
-        console.log(entry.hours)
+        const entry = req.body;        
         const saveEntry = await prisma.WorkEntry.create({
           data: {
             time: entry.time,

@@ -74,7 +74,7 @@ export default function Tiping() {
     if(!isClockedIn){
       console.log(rows);
       async function saveWorkEntry() {
-        const url = "http://localhost:3000/api/entries";
+        const url = "http://localhost:3000/api/workentries";
         const data = {
           method: "POST",
           headers: { "Content-Type": "application/json" },
