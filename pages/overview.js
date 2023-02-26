@@ -11,9 +11,11 @@ import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Link from "next/link";
+import Skeleton from "@mui/material/Skeleton";
 
 export default function Overview() {
   const [entries, setEntries] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function getWorkEntries() {
@@ -25,6 +27,7 @@ export default function Overview() {
       const response = await fetch(url, data);
       const res = await response.json();      
       setEntries(res);
+      setIsLoading(false);
     }
     getWorkEntries();
   }, []);
@@ -43,31 +46,39 @@ export default function Overview() {
     ));
     return (
       <Fragment>
-        <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Datum</TableCell>
-                <TableCell>Zeit</TableCell>
-                <TableCell>Trinkgeld</TableCell>
-                <TableCell>Touren</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>{items}</TableBody>
-          </Table>
-        </TableContainer>
-        <Stack>
-          <Link href="/tiping" passHref legacyBehavior>
-            <Button
-              variant="outlined"
-              sx={{
-                marginTop: "10px",
-              }}
-            >
-              Neuer Eintrag
-            </Button>
-          </Link>
-        </Stack>
+        {!isLoading ? (
+          <>
+           <TableContainer component={Paper}>
+           <Table>
+             <TableHead>
+               <TableRow>
+                 <TableCell>Datum</TableCell>
+                 <TableCell>Zeit</TableCell>
+                 <TableCell>Trinkgeld</TableCell>
+                 <TableCell>Touren</TableCell>
+               </TableRow>
+             </TableHead>
+             <TableBody>{items}</TableBody>
+           </Table>
+         </TableContainer>
+         <Stack>
+           <Link href="/tiping" passHref legacyBehavior>
+             <Button
+               variant="outlined"
+               sx={{
+                 marginTop: "10px",
+               }}
+             >
+               Neuer Eintrag
+             </Button>
+           </Link>
+         </Stack>
+         </>
+        ) : (
+          <Stack>
+            <Skeleton variant="rounded" height={120} />
+          </Stack>
+        )}       
       </Fragment>
     );
   }

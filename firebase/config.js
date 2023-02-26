@@ -4,7 +4,7 @@ import { getFirestore } from "firebase/firestore";
 /** Firebase config. 
  * 
  * The config is using Vercel environment variables - for Vercel deployment set matching variables within the Vercel project. 
- * Otherwise use static firestore configuration here.
+ * Otherwise use static firestore configuration here or create .env.local file and store config there.
  * */
 
 const firebaseConfig = {
