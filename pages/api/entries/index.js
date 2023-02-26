@@ -2,8 +2,18 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export default async (req, res) => {  
-  
+/** /api/entries/[id]
+ * 
+ * API controller for handling requests to the prisma client. 
+ * 
+ * It will either be necessary to add a 'trinkgeld.db' to the /prisma folder
+ * or to add a .env file and connect to a database of choice. 
+ * Visit https://www.prisma.io/docs/getting-started/quickstart for more infos.
+ * 
+ * Also the called API routes need to be adjusted to /api/entries in the frontend.
+ */
+
+export default async (req, res) => {    
   try {
     switch (req.method) {
       case "GET":

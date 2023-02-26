@@ -5,6 +5,14 @@ import {
   getDocs
 } from "firebase/firestore";
 
+
+/** /api/workentries/[id]
+ * 
+ * API controller for handling requests to a firestore. 
+ * 
+ * This route is the default route used. 
+ * It is needed to add a personal firebase config in firebase/config.js.
+ */
 export default async (req, res) => {
   try {
     switch (req.method) {
@@ -36,8 +44,7 @@ export default async (req, res) => {
         res.status(200).json("success");
         break;
     }
-  } catch (error) {
-    console.log(error.message);
+  } catch (error) {    
     res.status(403).json({ error: error.message });
   }
   res.end();

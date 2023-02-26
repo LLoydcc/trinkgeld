@@ -33,5 +33,3 @@ yarn-error.log*
 *.db
 /prisma/migrations
 
-# firebase
-firebase/index.js

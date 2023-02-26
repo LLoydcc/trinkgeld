@@ -40,17 +40,12 @@ export default function Shift() {
         headers: { "Content-Type": "application/json" },
       };
       const response = await fetch(url, data);
-      const res = await response.json();
-      console.log(res);
+      const res = await response.json();      
       setData(res);
       setIsLoading(false);
     }
     fetchShiftData();
   }, [id]);
-
-  React.useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   return (
     <Container fixed>
