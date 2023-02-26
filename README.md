@@ -24,8 +24,8 @@ By default **Firestore** will be used as datastorage. Create a firestore [here](
 For deployment add the variables in Vercel accordingly.
 
 #### Prisma
-The project includes a Prisma schema. To use a local SQLite database, add a file called `trinkgeld.db` to the Prisma folder. For other databases supported by Prisma, create a file named `.env` with the connection credentials following the [tutorial]((https://www.prisma.io/docs/getting-started/quickstart), and then initialize the database by running `npx prisma migrate dev --name init`.
+The project includes a Prisma schema. To use a local SQLite database, add a file called `trinkgeld.db` to the Prisma folder. For other databases supported by Prisma, create a file named `.env` with the connection credentials following the [tutorial](https://www.prisma.io/docs/getting-started/quickstart), and then initialize the database by running `npx prisma migrate dev --name init`.
 
 The API route `/api/workentries` is designed to handle Firebase usage, while the route `/api/entries` can be used with Prisma. If Prisma should be used, the routes will need to be adjusted accordingly in the client.
 
-*This Readme.md was written with* _[Era.sh](https://era.sh/)_.
+*this Readme.md was written with* _[Era.sh](https://era.sh/)_.
