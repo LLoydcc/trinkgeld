@@ -34,7 +34,7 @@ export default function Shift() {
       if (!id) {
         return;
       }
-      const url = "http://localhost:3000/api/workentries/" + router.query.id;
+      const url = process.env.NEXT_PUBLIC_API_URL + "workentries/" + router.query.id;
       const data = {
         method: "GET",
         headers: { "Content-Type": "application/json" },

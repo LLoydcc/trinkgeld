@@ -17,14 +17,13 @@ export default function Overview() {
 
   useEffect(() => {
     async function getWorkEntries() {
-      const url = "http://localhost:3000/api/workentries";
+      const url = process.env.NEXT_PUBLIC_API_URL + "workentries";
       const data = {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       };
       const response = await fetch(url, data);
-      const res = await response.json();
-      console.log(res);
+      const res = await response.json();      
       setEntries(res);
     }
     getWorkEntries();

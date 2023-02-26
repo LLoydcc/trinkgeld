@@ -73,7 +73,7 @@ export default function Tiping() {
   function onSaveWorkEntry() {  
     if(!isClockedIn){
       async function saveWorkEntry() {
-        const url = "http://localhost:3000/api/workentries";
+        const url = process.env.NEXT_PUBLIC_API_URL + "workentries";
         const data = {
           method: "POST",
           headers: { "Content-Type": "application/json" },
