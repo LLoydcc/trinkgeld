@@ -72,7 +72,6 @@ export default function Tiping() {
 
   function onSaveWorkEntry() {  
     if(!isClockedIn){
-      console.log(rows);
       async function saveWorkEntry() {
         const url = "http://localhost:3000/api/workentries";
         const data = {

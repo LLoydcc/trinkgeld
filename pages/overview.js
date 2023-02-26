@@ -17,13 +17,14 @@ export default function Overview() {
 
   useEffect(() => {
     async function getWorkEntries() {
-      const url = "http://localhost:3000/api/entries";
+      const url = "http://localhost:3000/api/workentries";
       const data = {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       };
       const response = await fetch(url, data);
       const res = await response.json();
+      console.log(res);
       setEntries(res);
     }
     getWorkEntries();
@@ -34,10 +35,10 @@ export default function Overview() {
     const items = entries.map((entry) => (
       <Link href={"/shift/" + entry.id} key={entry.id} passHref legacyBehavior>
         <TableRow sx={{cursor: 'pointer'}}>
-          <TableCell>{Moment(entry.date).format("DD.MM.YYYY")}</TableCell>
-          <TableCell>{entry.time}</TableCell>
-          <TableCell>{entry.tips}€</TableCell>
-          <TableCell>{entry.tours}</TableCell>
+          <TableCell>{Moment(entry.data.date).format("DD.MM.YYYY")}</TableCell>
+          <TableCell>{entry.data.time}</TableCell>
+          <TableCell>{entry.data.tips}€</TableCell>
+          <TableCell>{entry.data.tours}</TableCell>
         </TableRow>
       </Link>
     ));

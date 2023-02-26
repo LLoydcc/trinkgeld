@@ -58,7 +58,6 @@ export const Clockin = React.forwardRef((props, ref) => {
   }, [isClockedIn]);
 
   React.useEffect(() => {    
-    console.log(Math.floor(workTimeInSeconds % 3600));
     if(Math.floor(workTimeInSeconds % 3600) === 0){
       props.onHourChange(workTimeInSeconds / 3600);
     }    

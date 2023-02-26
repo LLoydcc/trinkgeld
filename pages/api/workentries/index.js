@@ -2,9 +2,6 @@ import { db } from "../../../firebase";
 import {
   collection,
   addDoc,
-  updateDoc,
-  doc,
-  deleteDoc,
   getDocs
 } from "firebase/firestore";
 
@@ -16,7 +13,7 @@ export default async (req, res) => {
         let result = [];
         entries.forEach(element => {
             let entry = {
-                Id: element.id,
+                id: element.id,
                 data: element.data()
             }
             result.push(entry)

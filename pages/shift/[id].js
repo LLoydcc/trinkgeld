@@ -34,13 +34,14 @@ export default function Shift() {
       if (!id) {
         return;
       }
-      const url = "http://localhost:3000/api/entries/" + router.query.id;
+      const url = "http://localhost:3000/api/workentries/" + router.query.id;
       const data = {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       };
       const response = await fetch(url, data);
       const res = await response.json();
+      console.log(res);
       setData(res);
       setIsLoading(false);
     }
@@ -48,7 +49,7 @@ export default function Shift() {
   }, [id]);
 
   React.useEffect(() => {
-    console.log(data.id);
+    console.log(data);
   }, [data]);
 
   return (
@@ -69,7 +70,7 @@ export default function Shift() {
                   spacing={1}
                 >
                   <Typography sx={{ fontSize: "21px" }} variant="h5">
-                    {Moment(data.date).format("DD.MM.YYYY")}
+                  {Moment(data.date).format("DD.MM.YYYY")}
                   </Typography>
                 </Stack>
                 <Stack
