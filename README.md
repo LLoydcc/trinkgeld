@@ -3,7 +3,7 @@
 Use the application to track tips and tours while you are working.
 
 ## Setup
-For local usage run `npm run dev` to start the application.
+For local usage run `npm install` and `npm run dev` to start the application.
 
 
 ### Environment Variables

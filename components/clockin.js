@@ -26,6 +26,7 @@ export const Clockin = React.forwardRef((props, ref) => {
   const [clockedInAt, setClockedInAt] = React.useState(new Date());
   const [clockedOutAt, setClockedOutAt] = React.useState(null);
   const [isFirstInit, setIsFirstInit] = React.useState(true);
+  const [hours, setHours] = React.useState(0);
   const [workTimeInSeconds, setWorkTimeInSeconds] = React.useState(0);
   const [openDialog, setOpenDialog] = React.useState(false);
   const [reset, setReset] = React.useState(false);
@@ -58,9 +59,12 @@ export const Clockin = React.forwardRef((props, ref) => {
   }, [isClockedIn]);
 
   React.useEffect(() => {    
-    if(Math.floor(workTimeInSeconds % 3600) === 0){
-      props.onHourChange(workTimeInSeconds / 3600);
-    }    
+    const minutes = Math.floor(workTimeInSeconds / 60);
+    const hour = Math.floor(minutes / 60);
+    if(hour > hours){
+      setHours(hour);
+      props.onHourChange(hour);
+    } 
   }, [workTimeInSeconds]);
 
   React.useEffect(() => {
