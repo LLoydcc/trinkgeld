@@ -12,6 +12,7 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Link from "next/link";
 import Skeleton from "@mui/material/Skeleton";
+import _ from 'underscore';
 
 export default function Overview() {
   const [entries, setEntries] = useState([]);
@@ -26,14 +27,16 @@ export default function Overview() {
       };
       const response = await fetch(url, data);
       const res = await response.json();      
-      setEntries(res);
+      setEntries(_.sortBy(res, function(entry){
+        return entry.data.date;
+      }));      
       setIsLoading(false);
     }
     getWorkEntries();
   }, []);
 
+
   function renderEntries() {
-    Moment.locale("en");
     const items = entries.map((entry) => (
       <Link href={"/shift/" + entry.id} key={entry.id} passHref legacyBehavior>
         <TableRow sx={{cursor: 'pointer'}}>
